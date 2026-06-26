@@ -1,0 +1,33 @@
+# dependencies / virtualenv
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter
+.ipynb_checkpoints/
+
+# secrets
+.env
+*.key
+secrets/
+
+# large models / data
+*.pth
+*.bin
+*.safetensors
+*.gguf
+data/raw/
