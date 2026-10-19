@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>米哈游 · AI 大模型岗面经（2026-10-17）</title>
+<style>
+  :root {
+    --bg: #edf0f5;
+    --paper: #ffffff;
+    --ink: #1c2430;
+    --muted: #6b7688;
+    --line: #e5e9f0;
+    --accent: #3767e8;
+    --accent-soft: #edf2ff;
+    --hint-bg: #f7f9fc;
+    --font: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+            "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 20px 72px;
+  }
+  .paper {
+    background: var(--paper);
+    border-radius: 18px;
+    box-shadow: 0 16px 48px rgba(28, 36, 48, 0.09);
+    padding: 56px 64px 44px;
+  }
+  .eyebrow {
+    margin: 0 0 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(26px, 4vw, 34px);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+  .sub {
+    margin: 14px 0 0;
+    max-width: 620px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+  }
+  .chip {
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: #f1f4f9;
+    color: #46536a;
+    font-size: 12.5px;
+    white-space: nowrap;
+  }
+  .toc {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    margin: 36px 0 0;
+  }
+  .toc a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14.5px;
+    transition: background 0.15s ease;
+  }
+  .toc a:hover { background: #f2f5fa; }
+  .toc-num {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .toc-count {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  section {
+    margin-top: 48px;
+    scroll-margin-top: 24px;
+  }
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 4px;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+  .sec-index {
+    flex: none;
+    padding: 1px 8px;
+    border-radius: 6px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 12.5px;
+    font-weight: 800;
+  }
+  .count {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  .desc {
+    margin: 0 0 8px;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+  .qs {
+    counter-reset: q;
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 0;
+  }
+  .qs > li {
+    counter-increment: q;
+    position: relative;
+    padding: 15px 0 15px 46px;
+    border-bottom: 1px solid var(--line);
+  }
+  .qs > li:last-child { border-bottom: none; }
+  .qs > li::before {
+    content: counter(q);
+    position: absolute;
+    left: 0;
+    top: 15px;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .q-text {
+    margin: 0;
+    font-size: 16.5px;
+    font-weight: 600;
+    line-height: 1.65;
+  }
+  details.hint { margin-top: 7px; }
+  details.hint summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 1px 0;
+    color: var(--muted);
+    font-size: 12.5px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+  details.hint summary::-webkit-details-marker { display: none; }
+  details.hint summary::before {
+    content: "+";
+    color: var(--accent);
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 13px;
+  }
+  details.hint[open] summary::before { content: "–"; }
+  details.hint p {
+    margin: 8px 0 2px;
+    padding: 10px 14px;
+    border-left: 3px solid #dbe4f5;
+    border-radius: 0 8px 8px 0;
+    background: var(--hint-bg);
+    color: #4a5568;
+    font-size: 13.5px;
+    line-height: 1.7;
+  }
+  footer {
+    margin-top: 52px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.85;
+  }
+  footer p { margin: 0 0 6px; }
+  footer p:last-child { margin-bottom: 0; }
+  .print-tip { color: #8a94a6; }
+  @media (max-width: 640px) {
+    .page { padding: 14px 10px 40px; }
+    .paper { padding: 28px 18px 24px; border-radius: 14px; }
+    .toc { grid-template-columns: 1fr; margin-top: 26px; }
+    h1 { font-size: 24px; }
+    .q-text { font-size: 15.5px; }
+    .qs > li { padding: 13px 0 13px 40px; }
+    .qs > li::before { top: 13px; width: 27px; height: 27px; }
+    section { margin-top: 36px; }
+  }
+  @media print {
+    body { background: #fff; }
+    .page { max-width: none; padding: 0; }
+    .paper { padding: 0; border-radius: 0; box-shadow: none; }
+    .toc { display: none; }
+    section { margin-top: 28px; }
+    .qs > li { break-inside: avoid; }
+    details.hint summary { display: none; }
+    details.hint:not([open]) > *:not(summary) { display: block !important; }
+    footer { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <article class="paper">
+
+    <header>
+      <p class="eyebrow">INTERVIEW ARCHIVE · MIHOYO</p>
+      <h1>米哈游 · AI 大模型岗面经</h1>
+      <p class="sub">按题型整理为五类：概念基础、项目深挖、工程与 API、系统设计、HR 面。共 37 题，题目保留原始表述。</p>
+      <div class="meta">
+        <span class="chip">面经日期 2026-10-17</span>
+        <span class="chip">37 题</span>
+        <span class="chip">阅读约 2 分钟</span>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="目录">
+      <a href="#sec-1"><span class="toc-num">01</span><span>概念基础题</span><span class="toc-count">11 题</span></a>
+      <a href="#sec-2"><span class="toc-num">02</span><span>项目深挖题</span><span class="toc-count">10 题</span></a>
+      <a href="#sec-3"><span class="toc-num">03</span><span>工程 &amp; API 相关题</span><span class="toc-count">4 题</span></a>
+      <a href="#sec-4"><span class="toc-num">04</span><span>系统设计题</span><span class="toc-count">6 题</span></a>
+      <a href="#sec-5"><span class="toc-num">05</span><span>HR 面高频题</span><span class="toc-count">6 题</span></a>
+    </nav>
+
+    <section id="sec-1">
+      <h2><span class="sec-index">一</span>概念基础题<span class="count">11 题</span></h2>
+      <p class="desc">Agent、RAG、幻觉、工具调用等核心概念，以及选型判断。</p>
+      <ol class="qs">
+        <li>
+          <p class="q-text">讲清楚大模型和 Agent 的关系？</p>
+          <details class="hint"><summary>考点提示</summary><p>LLM 是推理内核，Agent 在其上叠加规划、记忆、工具与执行循环；两者在自主性、输入输出边界上的差异。</p></details>
+        </li>
+        <li>
+          <p class="q-text">什么是 AI Agent？Agent 核心组件有哪些？</p>
+          <details class="hint"><summary>考点提示</summary><p>感知、规划（Planning）、记忆（Memory）、工具（Tools）、执行/反思；常见架构分层与各组件职责。</p></details>
+        </li>
+        <li>
+          <p class="q-text">ReAct 的思想是什么？CoT 与 ToT 的区别？</p>
+          <details class="hint"><summary>考点提示</summary><p>ReAct = Reasoning + Acting 交替推进；CoT 是单链线性推理；ToT 是树状搜索、可回溯与剪枝；三者的成本与适用场景。</p></details>
+        </li>
+        <li>
+          <p class="q-text">什么是幻觉？幻觉产生原因，怎么缓解？</p>
+          <details class="hint"><summary>考点提示</summary><p>定义与分类；来源（训练语料、解码随机性、知识边界、上下文误导）；缓解手段（RAG、引用约束、校验复核、低 temperature、微调与评测）。</p></details>
+        </li>
+        <li>
+          <p class="q-text">Function Calling 工具调用原理是什么？</p>
+          <details class="hint"><summary>考点提示</summary><p>工具 schema 如何注入模型、模型生成结构化调用参数、宿主执行并回填结果、循环终止条件。</p></details>
+        </li>
+        <li>
+          <p class="q-text">RAG 完整流程是什么？RAG 解决什么问题，有什么短板？</p>
+          <details class="hint"><summary>考点提示</summary><p>索引（解析—分块—Embedding—入库）→ 检索 → 重排 → 生成 → 评估；解决私域/时效知识、降低幻觉；短板在检索质量、多跳推理、长文档与上下文噪声。</p></details>
+        </li>
+        <li>
+          <p class="q-text">RAG 和微调如何选型？什么场景用 RAG，什么场景选微调？</p>
+          <details class="hint"><summary>考点提示</summary><p>知识注入 vs 行为/风格/格式对齐；从数据量、更新频率、可解释性、成本与延迟几个维度做决策，也可组合使用。</p></details>
+        </li>
+        <li>
+          <p class="q-text">RAG 和 Agent 的区别？两者如何结合？</p>
+          <details class="hint"><summary>考点提示</summary><p>RAG 是「检索增强生成」的单步能力，Agent 是多步规划与工具调用的执行体；结合方式包括 Agentic RAG、把检索封装为 Agent 工具、用 Agent 控制检索策略。</p></details>
+        </li>
+        <li>
+          <p class="q-text">Embedding 是什么？向量库作用？</p>
+          <details class="hint"><summary>考点提示</summary><p>文本到语义向量的映射与相似度检索；向量库负责索引、ANN 检索、元数据过滤与持久化；与关键词检索（BM25）的互补关系。</p></details>
+        </li>
+        <li>
+          <p class="q-text">上下文窗口超限有哪些处理方案？</p>
+          <details class="hint"><summary>考点提示</summary><p>截断、摘要压缩、滑动窗口、分层记忆、RAG 召回替代全量上下文、分段处理、利用长上下文模型。</p></details>
+        </li>
+        <li>
+          <p class="q-text">temperature 参数含义，不同业务场景怎么设置？</p>
+          <details class="hint"><summary>考点提示</summary><p>采样温度控制输出随机性；创意/闲聊偏高一档，抽取、工具调用、代码、事实问答偏低或 0；需与 top_p 等参数配合。</p></details>
+        </li>
+      </ol>
+    </section>
+
+    <section id="sec-2">
+      <h2><span class="sec-index">二</span>项目深挖题<span class="count">10 题</span></h2>
+      <p class="desc">围绕同一个项目连续追问，验证真实的选型、异常处理与评估闭环。</p>
+      <ol class="qs">
+        <li>
+          <p class="q-text">讲一遍你的 Agent/RAG 完整项目流程。</p>
+          <details class="hint"><summary>考点提示</summary><p>背景与目标、整体架构、关键模块、技术选型理由、个人贡献、上线效果；准备 5–10 分钟版本和 2 分钟版本。</p></details>
+        </li>
+        <li>
+          <p class="q-text">为什么选择 LangGraph，对比旧版 LangChain 优势？Node、Edge 简单解释。</p>
+          <details class="hint"><summary>考点提示</summary><p>图/状态机式编排、显式状态与检查点、循环与条件分支、可控性与可观测性；Node = 执行步骤（模型调用/工具/处理逻辑），Edge = 节点间流转（含条件边）。</p></details>
+        </li>
+        <li>
+          <p class="q-text">Agent 工具调用什么时候会出错？错误调用工具如何处理？</p>
+          <details class="hint"><summary>考点提示</summary><p>错选工具、参数幻觉/格式错、工具超时或异常、权限不足、结果不可用；处理手段包括 schema 校验、错误回填让模型纠正、有限重试、fallback、人工兜底。</p></details>
+        </li>
+        <li>
+          <p class="q-text">Agent 出现死循环，反复调用同一个工具，怎么解决？如何熔断？</p>
+          <details class="hint"><summary>考点提示</summary><p>步数/时间/Token 预算上限、重复调用与状态哈希检测、反思退出、熔断降级、告警；从 Prompt 与工具设计两侧减少循环诱因。</p></details>
+        </li>
+        <li>
+          <p class="q-text">Agent 的短期记忆、长期记忆分别怎么实现，工程难点是什么？</p>
+          <details class="hint"><summary>考点提示</summary><p>短期（上下文窗口、会话缓冲、滚动摘要）、长期（向量库、结构化画像、事实抽取）；难点在写入时机、去重与冲突、检索相关性、隐私隔离与遗忘机制。</p></details>
+        </li>
+        <li>
+          <p class="q-text">RAG 里文本分块大小、重叠度为什么这么设置？分块过大过小会带来什么问题？</p>
+          <details class="hint"><summary>考点提示</summary><p>按语义/标题/长度切分，overlap 保证跨块语义连续；块过大召回粗、噪声多、成本高；块过小语义碎片化、指代丢失、召回率下降。</p></details>
+        </li>
+        <li>
+          <p class="q-text">检索召回效果差，怎么优化？BM25、Rerank 了解吗？</p>
+          <details class="hint"><summary>考点提示</summary><p>Query 改写、多路召回、混合检索（BM25 + 向量）、元数据过滤、分块策略、Embedding 微调、Rerank；BM25 基于词频/逆文档频率的精确匹配，Rerank 用交叉编码器对候选精排。</p></details>
+        </li>
+        <li>
+          <p class="q-text">项目遇到过哪些 BadCase？举一个例子，你是怎么修复的？</p>
+          <details class="hint"><summary>考点提示</summary><p>定位链路与归因（数据/检索/Prompt/模型/工具）、修复方案、回归验证与指标变化；要能讲清「怎么发现—怎么定位—怎么修—怎么防再犯」。</p></details>
+        </li>
+        <li>
+          <p class="q-text">你的项目如何做效果评估？有哪些指标？</p>
+          <details class="hint"><summary>考点提示</summary><p>检索侧（Recall@K、MRR、NDCG）、生成侧（正确性、忠实度/幻觉率、相关性）、Agent 侧（任务成功率、步数、工具调用准确率）、线上（满意度、解决率、延迟、成本），以及人工评估与 LLM-as-judge。</p></details>
+        </li>
+        <li>
+          <p class="q-text">全部依赖大模型 API，如何处理超时、限流？</p>
+          <details class="hint"><summary>考点提示</summary><p>分级超时、指数退避 + 抖动重试、限流（令牌桶/并发池）、排队与降级、多供应商/多 Key 容灾、幂等与缓存、监控告警。</p></details>
+        </li>
+      </ol>
+    </section>
+
+    <section id="sec-3">
+      <h2><span class="sec-index">三</span>工程 &amp; API 相关题<span class="count">4 题</span></h2>
+      <p class="desc">上线后的稳定性、结构化输出、成本与容错。</p>
+      <ol class="qs">
+        <li>
+          <p class="q-text">使用大模型 API 会遇到哪些常见问题？</p>
+          <details class="hint"><summary>考点提示</summary><p>超时、限流 429、5xx、输出格式不稳定/幻觉、上下文超限、Token 成本高、内容安全、流式中断、模型版本变更导致行为漂移。</p></details>
+        </li>
+        <li>
+          <p class="q-text">大模型返回不合法 JSON 格式，怎么处理，保证结构化输出？</p>
+          <details class="hint"><summary>考点提示</summary><p>JSON mode / Function Calling / 结构化输出约束、schema 校验、解析容错（提取 JSON 片段）、失败重试并回填错误、降级模板兜底。</p></details>
+        </li>
+        <li>
+          <p class="q-text">Token 消耗怎么管控？线上业务如何做成本控制？</p>
+          <details class="hint"><summary>考点提示</summary><p>Prompt 压缩与缓存、上下文裁剪、按任务分级路由模型、限制输出长度、批处理、缓存命中、预算与用量监控告警。</p></details>
+        </li>
+        <li>
+          <p class="q-text">如何做异常捕获、重试策略？</p>
+          <details class="hint"><summary>考点提示</summary><p>错误分类（可重试/不可重试）、指数退避 + 抖动、最大重试次数、熔断、超时控制、幂等保证、日志与告警。</p></details>
+        </li>
+      </ol>
+    </section>
+
+    <section id="sec-4">
+      <h2><span class="sec-index">四</span>系统设计题<span class="count">6 题</span></h2>
+      <p class="desc">游戏 NPC 场景下的架构、安全、可观测性与取舍。</p>
+      <ol class="qs">
+        <li>
+          <p class="q-text">设计一个游戏 AI-NPC Agent 系统，支持多玩家同时对话，保证人设稳定、世界观不崩坏，请描述整体架构。</p>
+          <details class="hint"><summary>考点提示</summary><p>接入层/会话管理、NPC 人设与世界观知识库、RAG、编排与工具（任务、状态、行为）、记忆分层、安全审核、可观测性；多玩家并发与人设一致性约束。</p></details>
+        </li>
+        <li>
+          <p class="q-text">Agent 上线会有哪些风险？如何防范 prompt 注入、越权调用工具？</p>
+          <details class="hint"><summary>考点提示</summary><p>直接/间接 Prompt 注入、越权工具调用、数据泄露、内容违规；防护包括输入输出过滤、工具白名单与参数校验、最小权限、敏感操作人工确认、会话与租户隔离、审计。</p></details>
+        </li>
+        <li>
+          <p class="q-text">企业级 Agent 系统怎么做日志、监控、审计？</p>
+          <details class="hint"><summary>考点提示</summary><p>全链路 Trace（请求→检索→工具→模型→响应）、指标（延迟、Token、成功率、成本）、告警、敏感信息脱敏、审计留痕与合规保存。</p></details>
+        </li>
+        <li>
+          <p class="q-text">LangGraph 有哪些缺点？如果自研 Agent 编排框架，你会怎么设计？</p>
+          <details class="hint"><summary>考点提示</summary><p>学习曲线、调试与可观测性、复杂状态管理、生态/版本绑定；自研关注节点与状态抽象、DAG/状态机调度、持久化与恢复、工具插件化、可观测与评测、权限与多租户。</p></details>
+        </li>
+        <li>
+          <p class="q-text">多个玩家和同一个 NPC 对话，如何做到会话隔离，记忆互不干扰？</p>
+          <details class="hint"><summary>考点提示</summary><p>按玩家/会话维度隔离上下文与记忆命名空间、NPC 全局设定与个人记忆分层、并发一致性与读写隔离、数据权限、隐私与清理策略。</p></details>
+        </li>
+        <li>
+          <p class="q-text">Agent 落地目前最大瓶颈是什么？</p>
+          <details class="hint"><summary>考点提示</summary><p>可靠性与幻觉、效果评估难、成本与延迟、工具/系统集成、安全与权限、组织数据准备；结合游戏场景谈实时性与内容安全约束。</p></details>
+        </li>
+      </ol>
+    </section>
+
+    <section id="sec-5">
+      <h2><span class="sec-index">五</span>HR 面高频题<span class="count">6 题</span></h2>
+      <p class="desc">动机、自我认知与岗位匹配度。</p>
+      <ol class="qs">
+        <li>
+          <p class="q-text">为什么想来米哈游？为什么选择大模型 Agent 方向？</p>
+          <details class="hint"><summary>考点提示</summary><p>对米哈游产品与技术的理解、岗位匹配、个人经历与动机的一致性，避免只谈「公司有名/行业热门」。</p></details>
+        </li>
+        <li>
+          <p class="q-text">讲讲项目中遇到的最大困难，如何解决？</p>
+          <details class="hint"><summary>考点提示</summary><p>STAR 结构、技术深度、个人贡献占比、复盘与沉淀；选「有真实卡点且能讲清解决过程」的例子。</p></details>
+        </li>
+        <li>
+          <p class="q-text">你的优势和短板分别是什么？</p>
+          <details class="hint"><summary>考点提示</summary><p>真实且与岗位相关，优势有例证，短板有改进动作，避免套路化答案。</p></details>
+        </li>
+        <li>
+          <p class="q-text">玩过米哈游哪些游戏？对于游戏内 AI 有什么想法？</p>
+          <details class="hint"><summary>考点提示</summary><p>真实游戏体验、对 NPC/陪伴/内容生成的理解、产品与工程可行性的思考，最好落到具体场景。</p></details>
+        </li>
+        <li>
+          <p class="q-text">未来 1-2 年职业规划？</p>
+          <details class="hint"><summary>考点提示</summary><p>技术深耕路径、与团队目标的契合度、可执行的阶段性目标，避免空泛或与岗位脱节。</p></details>
+        </li>
+        <li>
+          <p class="q-text">可到岗时间、期望薪资，对实习强度怎么看？</p>
+          <details class="hint"><summary>考点提示</summary><p>诚实清晰、边界与承诺；实习时间、地点与强度能给出明确答复。</p></details>
+        </li>
+      </ol>
+    </section>
+
+    <footer>
+      <p>整理说明：题目保留原面经表述，仅统一中英文间距与标点，并修正 3 处明显的 OCR/排版错误（「I旧版」→「旧版」、「ISON」→「JSON」、项目题 3/4 错行拆分）。</p>
+      <p>每题下方的「考点提示」为整理时补充，不属于原面经内容，可点击展开查看。</p>
+      <p class="print-tip">提示：浏览器中可直接打印，或在打印对话框中选择「另存为 PDF」。</p>
+    </footer>
+
+  </article>
+</div>
+</body>
+</html>
