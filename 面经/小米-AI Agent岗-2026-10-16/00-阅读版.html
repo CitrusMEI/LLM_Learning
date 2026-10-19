@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>小米 · AI Agent 岗面经（2026-10-16）</title>
+<style>
+  :root {
+    --bg: #edf0f5;
+    --paper: #ffffff;
+    --ink: #1c2430;
+    --muted: #6b7688;
+    --line: #e5e9f0;
+    --accent: #3767e8;
+    --accent-soft: #edf2ff;
+    --hint-bg: #f7f9fc;
+    --font: "Inter", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+            "Noto Sans SC", system-ui, -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 20px 72px;
+  }
+  .paper {
+    background: var(--paper);
+    border-radius: 18px;
+    box-shadow: 0 16px 48px rgba(28, 36, 48, 0.09);
+    padding: 56px 64px 44px;
+  }
+  .eyebrow {
+    margin: 0 0 14px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(26px, 4vw, 34px);
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+  .sub {
+    margin: 14px 0 0;
+    max-width: 640px;
+    color: var(--muted);
+    font-size: 15px;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+  }
+  .chip {
+    padding: 5px 11px;
+    border-radius: 999px;
+    background: #f1f4f9;
+    color: #46536a;
+    font-size: 12.5px;
+    white-space: nowrap;
+  }
+  .toc {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    margin: 36px 0 0;
+  }
+  .toc a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14.5px;
+    transition: background 0.15s ease;
+  }
+  .toc a:hover { background: #f2f5fa; }
+  .toc-num {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .toc-count {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  section {
+    margin-top: 48px;
+    scroll-margin-top: 24px;
+  }
+  h2 {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin: 0 0 4px;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+  }
+  .sec-index {
+    flex: none;
+    padding: 1px 8px;
+    border-radius: 6px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 12.5px;
+    font-weight: 800;
+  }
+  .count {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+  .desc {
+    margin: 0 0 8px;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+  .qs {
+    counter-reset: q;
+    list-style: none;
+    margin: 6px 0 0;
+    padding: 0;
+  }
+  .qs > li {
+    counter-increment: q;
+    position: relative;
+    padding: 16px 0 16px 46px;
+    border-bottom: 1px solid var(--line);
+  }
+  .qs > li:last-child { border-bottom: none; }
+  .qs > li::before {
+    content: counter(q);
+    position: absolute;
+    left: 0;
+    top: 16px;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+  .q-text {
+    margin: 0;
+    font-size: 16.5px;
+    font-weight: 600;
+    line-height: 1.65;
+  }
+  .ans {
+    margin: 9px 0 2px;
+    padding: 10px 14px;
+    border-left: 3px solid #dbe4f5;
+    border-radius: 0 8px 8px 0;
+    background: var(--hint-bg);
+    color: #45536a;
+    font-size: 14.5px;
+    line-height: 1.78;
+  }
+  .ans-label {
+    display: inline-block;
+    margin-right: 7px;
+    padding: 0 6px;
+    border-radius: 5px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 11.5px;
+    font-weight: 800;
+    vertical-align: 1px;
+  }
+  footer {
+    margin-top: 52px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 12.5px;
+    line-height: 1.85;
+  }
+  footer p { margin: 0 0 6px; }
+  footer p:last-child { margin-bottom: 0; }
+  .print-tip { color: #8a94a6; }
+  @media (max-width: 640px) {
+    .page { padding: 14px 10px 40px; }
+    .paper { padding: 28px 18px 24px; border-radius: 14px; }
+    .toc { grid-template-columns: 1fr; margin-top: 26px; }
+    h1 { font-size: 24px; }
+    .q-text { font-size: 15.5px; }
+    .qs > li { padding: 13px 0 13px 40px; }
+    .qs > li::before { top: 13px; width: 27px; height: 27px; }
+    section { margin-top: 36px; }
+  }
+  @media print {
+    body { background: #fff; }
+    .page { max-width: none; padding: 0; }
+    .paper { padding: 0; border-radius: 0; box-shadow: none; }
+    .toc { display: none; }
+    section { margin-top: 28px; }
+    .qs > li { break-inside: avoid; }
+    footer { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <article class="paper">
+
+    <header>
+      <p class="eyebrow">INTERVIEW ARCHIVE · XIAOMI</p>
+      <h1>小米 · AI Agent 岗面经</h1>
+      <p class="sub">一面 → 二面 → 三面 → HR 高频，共 21 题。保留原帖题目与作者回答，答案系候选人自述，非标准答案。</p>
+      <div class="meta">
+        <span class="chip">面经日期 2026-10-16</span>
+        <span class="chip">21 题</span>
+        <span class="chip">约 1h30min</span>
+        <span class="chip">难度 ★★★★★</span>
+        <span class="chip">阅读约 8 分钟</span>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="目录">
+      <a href="#sec-1"><span class="toc-num">01</span><span>一面</span><span class="toc-count">8 题</span></a>
+      <a href="#sec-2"><span class="toc-num">02</span><span>二面</span><span class="toc-count">4 题</span></a>
+      <a href="#sec-3"><span class="toc-num">03</span><span>三面</span><span class="toc-count">4 题</span></a>
+      <a href="#sec-4"><span class="toc-num">04</span><span>HR 高频</span><span class="toc-count">5 题</span></a>
+    </nav>
+
+    <section id="sec-1">
+      <h2><span class="sec-index">一</span>一面<span class="count">8 题</span></h2>
+      <p class="desc">自我介绍与项目介绍，随后围绕 Agent 编排、RAG 检索、端云协同与多租户连续追问。</p>
+      <ol class="qs">
+        <li>
+          <p class="q-text">自我介绍，介绍 Agent 项目，你负责哪些模块？</p>
+          <p class="ans"><span class="ans-label">答</span>我做的是基于 LangGraph 的工具调用 Agent，搭配 RAG 知识库。我负责整体编排逻辑、混合检索、Redis 分布式熔断、上下文压缩模块。这个 Demo 可以自主规划任务、调用工具，处理多轮问答，规避死循环。</p>
+        </li>
+        <li>
+          <p class="q-text">讲 Agent 完整流程 ReAct 的 Thought / Action / Observation？</p>
+          <p class="ans"><span class="ans-label">答</span>ReAct 是循环执行。Thought：模型思考，判断是否需要调用工具；Action：选定工具，输出参数；Observation：拿到工具返回结果，再次判断信息够不够。信息充足直接回答，不够继续循环，全程加熔断防止死循环。</p>
+        </li>
+        <li>
+          <p class="q-text">LangGraph vs LangChain，Workflow 和 Agent 如何选型？</p>
+          <p class="ans"><span class="ans-label">答</span>LangChain 以线性链式 Workflow 为主，原生缺少循环和状态持久化。LangGraph 是图编排，支持分支、循环、断点续跑，适合 ReAct。简单固定任务用 Workflow，稳定省 token；多步骤复杂任务用 Agent。线上一般混合架构。</p>
+        </li>
+        <li>
+          <p class="q-text">Agent 死循环，单机熔断怎么做？分布式为什么不能内存计数？Redis 方案？</p>
+          <p class="ans"><span class="ans-label">答</span>单机：内存计数，限制最大工具调用次数，检测重复调用就终止。分布式多实例内存互相隔离，重启扩容状态丢失，熔断失效。分布式用 Redis，sessionId 做 key 保存调用次数，设置 TTL；连续多次调用相同工具参数，直接判定死循环终止任务。</p>
+        </li>
+        <li>
+          <p class="q-text">Embedding 输出向量维度，固定分块的缺点？</p>
+          <p class="ans"><span class="ans-label">答</span>我项目里用的 Embedding 输出 768 维向量。固定分块容易把完整语义切断，破坏上下文；长文本还会出现 Lost-in-the-Middle 问题。我用语义分块 + 固定分块结合优化。</p>
+        </li>
+        <li>
+          <p class="q-text">ANN 检索 HNSW 原理是什么？</p>
+          <p class="ans"><span class="ans-label">答</span>HNSW 是多层有向图结构。上层粗粒度快速导航，下层做精准检索。优点召回速度快，检索质量高；搭配 PQ 量化压缩向量，降低内存开销。</p>
+        </li>
+        <li>
+          <p class="q-text">小爱端云协同 Agent 怎么设计？哪些任务放端侧、哪些上云端 MiLM？难点？</p>
+          <p class="ans"><span class="ans-label">答</span>轻量意图识别、基础记忆、简单工具放在手机端，延迟低，保护隐私；复杂多步规划、长文档 RAG、深度推理交给云端 MiLM。难点：手机功耗内存受限，端模型需要量化；弱网下要处理会话同步、任务断点续跑。</p>
+        </li>
+        <li>
+          <p class="q-text">Agent 多租户隔离怎么做，资源怎么隔离？</p>
+          <p class="ans"><span class="ans-label">答</span>每个用户独立 sessionId，Redis 按 session 隔离会话；向量库按租户做索引隔离；工具层增加租户权限校验；并发限流，防止单个用户占用过多算力资源。</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="sec-2">
+      <h2><span class="sec-index">二</span>二面<span class="count">4 题</span></h2>
+      <p class="desc">系统设计 + 评测体系 + 线上问题排查，全部收束到小爱端云协同场景。</p>
+      <ol class="qs">
+        <li>
+          <p class="q-text">设计小爱端云协同个人助理 Agent（查日程、天气、本地文件，多租户、SSE），讲架构 + 难点</p>
+          <p class="ans"><span class="ans-label">答</span>分层架构。端侧层：轻量意图识别、本地记忆、弱网降级；会话层 Redis 保存会话与熔断计数；工具管理层管理天气、日程、本地文件工具；Agent 编排层 ReAct 规划，简单请求走 Workflow；LLM 层调用云端 MiLM，SSE 流式输出；隐私风控层保护本地数据；最后监控采集各项指标。难点：弱网任务续跑、端云状态一致性、手机功耗、多租户隐私隔离、云端 token 成本控制。</p>
+        </li>
+        <li>
+          <p class="q-text">Agent 评测有哪些指标，区分客观、主观指标？</p>
+          <p class="ans"><span class="ans-label">答</span>客观指标：任务完成率、工具调用成功率、首 token 延迟、幻觉率。主观指标：用户满意度、回答有用性打分。客观指标做自动化回归，主观指标靠 A/B 测试。</p>
+        </li>
+        <li>
+          <p class="q-text">大量用户反馈 Agent 任务失败，排查与迭代思路？</p>
+          <p class="ans"><span class="ans-label">答</span>第一，全链路 Trace 埋点，定位故障节点；第二，收集 badcase 归类；第三，判断根因是意图识别、工具描述、模型还是检索问题；第四，修复后小流量灰度上线，持续监控指标。</p>
+        </li>
+        <li>
+          <p class="q-text">小爱场景，Workflow 和 Agent 怎么混合选型？</p>
+          <p class="ans"><span class="ans-label">答</span>简单高频任务，查天气、设置闹钟，走 Workflow，稳定低成本。复杂多步任务，行程规划、多文件查询交给 Agent。线上两者混合，减轻大模型压力。</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="sec-3">
+      <h2><span class="sec-index">三</span>三面<span class="count">4 题</span></h2>
+      <p class="desc">项目复盘与工程判断，考察对落地瓶颈、动机和长期迭代的思考。</p>
+      <ol class="qs">
+        <li>
+          <p class="q-text">你的 Demo 上线小米，最大缺陷是什么？重构优先改哪里？</p>
+          <p class="ans"><span class="ans-label">答</span>Demo 缺少全链路监控与 Trace，没有分级降级，并发能力弱，缺少完整隐私校验。重构优先补全链路追踪、隐私风控、多级降级、badcase 自动收集闭环。</p>
+        </li>
+        <li>
+          <p class="q-text">端云 Agent 最大落地瓶颈是什么？</p>
+          <p class="ans"><span class="ans-label">答</span>隐私和体验的平衡。全部数据上云有隐私风险；只用端侧模型算力不足，复杂任务效果差。另外弱网场景任务中断，很难续跑。</p>
+        </li>
+        <li>
+          <p class="q-text">为什么投递小米 Agent，不投其他公司 AI 岗位？</p>
+          <p class="ans"><span class="ans-label">答</span>小米做端云一体的个人助手，和纯云端 Agent 不一样，同时兼顾设备算力、隐私保护，工程挑战很有价值。我想深耕端侧 + 云端协同的 Agent 落地。</p>
+        </li>
+        <li>
+          <p class="q-text">任务指标长期无法提升，你会怎么做？</p>
+          <p class="ans"><span class="ans-label">答</span>拆解指标定位瓶颈，区分模型、编排、工具、知识库问题，做对照实验迭代。如果提升困难，可以把部分场景切到 Workflow 兜底，不强行全部用 Agent。</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="sec-4">
+      <h2><span class="sec-index">四</span>HR 高频<span class="count">5 题</span></h2>
+      <p class="desc">动机、职业规划、挫折冲突与稳定性，明显与「端云协同 / 硬件 + AI」的业务方向绑定。</p>
+      <ol class="qs">
+        <li>
+          <p class="q-text">自我介绍 + 项目简述</p>
+          <p class="ans"><span class="ans-label">答</span>我自学大模型与 Agent 开发，用 LangGraph 搭建带 RAG 的智能体 Demo，掌握 RAG、Redis 会话管理、分布式熔断。希望加入小米，参与小爱端云协同 Agent 的落地。</p>
+        </li>
+        <li>
+          <p class="q-text">为什么选小米 Agent 方向？</p>
+          <p class="ans"><span class="ans-label">答</span>端云协同是小米特色，在硬件 + AI 结合场景做智能助手，我对这个方向很感兴趣，希望在设备端智能体方向持续成长。</p>
+        </li>
+        <li>
+          <p class="q-text">1-3 年职业规划</p>
+          <p class="ans"><span class="ans-label">答</span>第一年夯实 Agent 应用开发工程能力，熟练 RAG、工具编排；第二年独立负责小型 Agent 模块；第三年深入端云协同场景，参与智能助手产品落地。</p>
+        </li>
+        <li>
+          <p class="q-text">遇到的挫折、团队冲突经历</p>
+          <p class="ans"><span class="ans-label">答</span>举项目开发例子。项目调试时工具调用频繁死循环，反复排查，最后增加 Redis 熔断和重复行为检测解决。遇到意见分歧，先对齐目标，用实验数据验证方案，而不是主观争论。</p>
+        </li>
+        <li>
+          <p class="q-text">稳定性、到岗时间</p>
+          <p class="ans"><span class="ans-label">答</span>期望可以稳定长期投入，能满足岗位要求的到岗时间。</p>
+        </li>
+      </ol>
+    </section>
+
+    <footer>
+      <p>整理说明：原文题目与「答」全部保留，仅统一中英文间距与标点，并按轮次拆分；作者回答为候选人自述，非标准答案。</p>
+      <p>修正的明显 OCR 错误：「LangGraphvs LangChain」→「LangGraph vs LangChain」、「Redis方案?」→「Redis 方案？」、「你的Demo上线小米」→「你的 Demo 上线小米」、「期可以」→「期望可以」、「sessionld」→「sessionId」。</p>
+      <p class="print-tip">提示：浏览器中可直接打印，或在打印对话框中选择「另存为 PDF」。</p>
+    </footer>
+
+  </article>
+</div>
+</body>
+</html>
